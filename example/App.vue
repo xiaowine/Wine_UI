@@ -16,9 +16,10 @@
       @selected="handleSelected"
     >
       <template #right>
-        <button class="theme-toggle" @click="toggleTheme">
-          切换主题 (当前: {{ theme }})
-        </button>
+        <ThemeSwitch
+          :theme="themeContext?.theme.value ?? 'light'"
+          @toggleThemeEvent="toggleTheme"
+        />
       </template>
     </Topbar>
     <div class="main-content">
@@ -30,11 +31,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, computed } from "vue";
+import { ref, inject } from "vue";
 import { Topbar, type MenuItem } from "wine-ui";
 import logo from "@example/assets/vue.svg";
 import type { MenuEventType } from "@/components/Topbar/types";
 import type { ThemeContext } from "@/plugins/theme/types";
+import ThemeSwitch from "./components/ThemeSwitch.vue";
 
 const isTopbarMenuOpen = ref(false);
 
@@ -92,7 +94,6 @@ const handleSelected = (item: MenuItem) => {
 
 // 注入主题实例
 const themeContext = inject<ThemeContext>("theme");
-const theme = computed(() => themeContext?.theme.value);
 
 // 切换主题方法
 const toggleTheme = () => {
@@ -101,12 +102,7 @@ const toggleTheme = () => {
 </script>
 
 <style scoped lang="scss">
-@mixin mobile {
-  @media screen and (max-width: 768px) {
-    @content;
-  }
-}
-
+@use "@/styles/theme.scss" as *;
 .app-container {
   min-height: 100vh;
   background-color: var(--w-bg-color);
@@ -124,24 +120,6 @@ const toggleTheme = () => {
 
   @include mobile {
     padding: 15px;
-  }
-}
-
-.theme-toggle {
-  padding: 8px 16px;
-  border: 1px solid var(--w-border-color);
-  border-radius: 4px;
-  cursor: pointer;
-  background: var(--w-primary-color);
-  color: var(--w-text-color);
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: var(--w-primary-color-hover);
-  }
-
-  &:active {
-    background: var(--w-primary-color-active);
   }
 }
 </style>
