@@ -5,9 +5,12 @@ export function createTheme(options: ThemeOptions = {}): ThemeContext {
   const THEME_KEY = options.storageKey || "wine-ui-theme";
   const defaultTheme = options.defaultTheme || "light";
 
-  const currentTheme = ref<Theme>(
-    (localStorage.getItem(THEME_KEY) as Theme) || defaultTheme
-  );
+  // 获取保存的主题或默认主题
+  const savedTheme = localStorage.getItem(THEME_KEY) as Theme;
+  const currentTheme = ref<Theme>(savedTheme || defaultTheme);
+
+  // 立即应用保存的主题
+  document.documentElement.setAttribute("data-theme", currentTheme.value);
 
   const systemThemeMatcher = window.matchMedia("(prefers-color-scheme: dark)");
 
