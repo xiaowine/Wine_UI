@@ -16,7 +16,7 @@ export default defineConfig({
       name: "WineUI",
       fileName: (format) => `wine-ui.${format}.js`,
     },
-    outDir: "lib",
+    outDir: "dist-lib",
     rollupOptions: {
       external: ["vue"],
       output: {
