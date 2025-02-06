@@ -101,7 +101,7 @@ const toggleTheme = () => {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @use "wine-ui/styles/theme.scss" as *;
 
 .app-container {

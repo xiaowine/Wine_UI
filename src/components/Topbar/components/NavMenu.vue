@@ -60,3 +60,6 @@ const handleItemClick = (item: MenuItem) => {
   item.onClick?.();
 };
 </script>
+<style lang="scss" scoped>
+@use "../index.scss";
+</style>
