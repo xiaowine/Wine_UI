@@ -2,7 +2,7 @@
   <div class="app-container">
     <Topbar
       v-model="isTopbarMenuOpen"
-      logo="/vue.svg"
+      :logo="toplogo"
       title="Wine UI"
       nav-position="left"
       :items="menuItems"
@@ -35,6 +35,7 @@
 </template>
 
 <script setup lang="ts">
+import toplogo from "/vue.svg";
 import { ref, inject } from "vue";
 import { Topbar, type MenuItem, ThemeTransition, ThemeSwitch } from "wine-ui";
 import type { MenuEventType } from "wine-ui/components/Topbar/types";
