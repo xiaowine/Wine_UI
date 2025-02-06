@@ -4,7 +4,7 @@
       v-model="isTopbarMenuOpen"
       :logo="logo"
       title="Wine UI"
-      :nav-position="'right'"
+      nav-position="left"
       :items="menuItems"
       mobile-nav-gap="20px"
       @before-open="handleBeforeOpen"
@@ -15,13 +15,15 @@
       @select="handleSelect"
       @selected="handleSelected"
     >
+      <template #right>
+        <button class="theme-toggle" @click="toggleTheme">
+          切换主题 (当前: {{ theme }})
+        </button>
+      </template>
     </Topbar>
     <div class="main-content">
       <div class="container">
         <h1>Wine UI 组件库示例</h1>
-        <button class="theme-toggle" @click="toggleTheme">
-          切换主题 (当前: {{ theme }})
-        </button>
       </div>
     </div>
   </div>
