@@ -2,7 +2,7 @@
   <div class="app-container">
     <Topbar
       v-model="isTopbarMenuOpen"
-      :logo="logo"
+      logo="/vue.svg"
       title="Wine UI"
       nav-position="left"
       :items="menuItems"
@@ -37,9 +37,8 @@
 <script setup lang="ts">
 import { ref, inject } from "vue";
 import { Topbar, type MenuItem, ThemeTransition, ThemeSwitch } from "wine-ui";
-import logo from "@example/assets/vue.svg";
-import type { MenuEventType } from "@/components/Topbar/types";
-import type { ThemeContext } from "@/plugins/theme/types";
+import type { MenuEventType } from "wine-ui/components/Topbar/types";
+import type { ThemeContext } from "wine-ui/plugins/theme/types";
 
 const isTopbarMenuOpen = ref(false);
 
@@ -124,7 +123,7 @@ const toggleTheme = () => {
 </script>
 
 <style lang="scss">
-@use "wine-ui/styles/theme.scss" as *;
+@use "@theme/theme.scss" as *;
 
 .app-container {
   min-height: 100vh;

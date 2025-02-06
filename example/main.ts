@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import ThemePlugin from "@/plugins/theme";
+import ThemePlugin from "wine-ui/plugins/theme";
 
 const app = createApp(App);
 app.use(ThemePlugin, {

@@ -18,14 +18,14 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@@/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@utils/*": ["src/utils/*"],
+      "@/*": ["wine-ui/*"],
+      "@components/*": ["wine-ui/components/*"],
+      "@@/*": ["wine-ui/components/*"],
+      "@assets/*": ["wine-ui/assets/*"],
+      "@utils/*": ["wine-ui/utils/*"],
       "@example/*": ["example/*"],
-      "packages/*": ["src/components/*"],
-      "wine-ui": ["src/index.ts"]
+      "packages/*": ["wine-ui/components/*"],
+      "wine-ui": ["wine-ui/index.ts"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -34,9 +34,9 @@
     "composite": true
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
+    "wine-ui/**/*.ts",
+    "wine-ui/**/*.tsx",
+    "wine-ui/**/*.vue",
     "example/**/*.ts",
     "example/**/*.tsx",
     "example/**/*.vue"

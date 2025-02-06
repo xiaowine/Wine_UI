@@ -3,33 +3,39 @@ import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
 
 export default defineConfig({
+  base: "./",
   plugins: [vue()],
   root: "example",
+  publicDir: resolve(__dirname, "example/public"),
   resolve: {
     alias: {
-      "@": resolve(__dirname, "src"),
-      "@components": resolve(__dirname, "src/components"),
-      "@@": resolve(__dirname, "src/components"),
-      "@assets": resolve(__dirname, "src/assets"),
-      "@utils": resolve(__dirname, "src/utils"),
+      "@": resolve(__dirname, "wine-ui"),
+      "@components": resolve(__dirname, "wine-ui/components"),
       "@example": resolve(__dirname, "example"),
-      packages: resolve(__dirname, "src/components"),
-      "wine-ui": resolve(__dirname, "src"),
+      "wine-ui": resolve(__dirname, "wine-ui"),
+      // 添加样式别名
+      "@theme": resolve(__dirname, "wine-ui/styles"),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/theme.scss";;`,
+        includePaths: [resolve(__dirname)],
+      },
     },
   },
   build: {
-    lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "WineUI",
-      fileName: "wine-ui",
-    },
+    outDir: resolve(__dirname, "dist"),
     rollupOptions: {
-      external: ["vue"],
-      output: {
-        globals: {
-          vue: "Vue",
-        },
+      input: {
+        main: resolve(__dirname, "example/index.html"),
       },
     },
+  },
+  preview: {
+    port: 5000,
+    strictPort: true,
+    host: true,
   },
 });

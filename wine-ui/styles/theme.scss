@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // 定义主题色值映射
 $themes: (
   light: (
@@ -41,7 +43,7 @@ $themes: (
 
 // 主题生成mixin
 @mixin generate-theme($theme-name) {
-  $theme-map: map-get($themes, $theme-name);
+  $theme-map: map.get($themes, $theme-name);
 
   @if $theme-name == "light" {
     :root {
@@ -56,20 +58,20 @@ $themes: (
 
 // 设置主题变量mixin
 @mixin set-theme-variables($theme-map) {
-  --w-primary-color: #{map-get(map-get($theme-map, primary), base)};
-  --w-primary-color-hover: #{map-get(map-get($theme-map, primary), hover)};
-  --w-primary-color-active: #{map-get(map-get($theme-map, primary), active)};
+  --w-primary-color: #{map.get(map.get($theme-map, primary), base)};
+  --w-primary-color-hover: #{map.get(map.get($theme-map, primary), hover)};
+  --w-primary-color-active: #{map.get(map.get($theme-map, primary), active)};
 
-  --w-text-color: #{map-get(map-get($theme-map, text), base)};
-  --w-text-color-secondary: #{map-get(map-get($theme-map, text), secondary)};
-  --w-text-color-disabled: #{map-get(map-get($theme-map, text), disabled)};
+  --w-text-color: #{map.get(map.get($theme-map, text), base)};
+  --w-text-color-secondary: #{map.get(map.get($theme-map, text), secondary)};
+  --w-text-color-disabled: #{map.get(map.get($theme-map, text), disabled)};
 
-  --w-bg-color: #{map-get(map-get($theme-map, background), base)};
-  --w-bg-color-hover: #{map-get(map-get($theme-map, background), hover)};
-  --w-bg-color-secondary: #{map-get(map-get($theme-map, background), secondary)};
+  --w-bg-color: #{map.get(map.get($theme-map, background), base)};
+  --w-bg-color-hover: #{map.get(map.get($theme-map, background), hover)};
+  --w-bg-color-secondary: #{map.get(map.get($theme-map, background), secondary)};
 
-  --w-border-color: #{map-get($theme-map, border)};
-  --w-shadow: #{map-get($theme-map, shadow)};
+  --w-border-color: #{map.get($theme-map, border)};
+  --w-shadow: #{map.get($theme-map, shadow)};
 
   // 组件特定变量保持不变
   --w-topbar-height: 60px;
@@ -85,12 +87,12 @@ $themes: (
 @include generate-theme("dark");
 
 :root {
-  --w-bg-color-light: #{map-get(
-      map-get(map-get($themes, light), background),
+  --w-bg-color-light: #{map.get(
+      map.get(map.get($themes, light), background),
       base
     )};
-  --w-bg-color-dark: #{map-get(
-      map-get(map-get($themes, dark), background),
+  --w-bg-color-dark: #{map.get(
+      map.get(map.get($themes, dark), background),
       base
     )};
 }

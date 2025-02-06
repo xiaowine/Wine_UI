@@ -1,4 +1,5 @@
-@use "wine-ui/styles/theme.scss" as *;
+// 使用别名路径
+@use "@theme/theme.scss" as *;
 
 .theme-switch {
   position: relative;
