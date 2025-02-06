@@ -4,8 +4,6 @@
       class="theme-transition"
       :class="{ 'theme-transition--active': active }"
       :style="{
-        '--origin-x': `${x}px`,
-        '--origin-y': `${y}px`,
         '--next-theme-color': nextThemeColor,
       }"
       @transitionend="onTransitionEnd"
@@ -17,8 +15,6 @@
 import { ref } from "vue";
 
 const active = ref(false);
-const x = ref(0);
-const y = ref(0);
 const nextThemeColor = ref("");
 const isAnimating = ref(false);
 
