@@ -102,7 +102,8 @@ const toggleTheme = () => {
 </script>
 
 <style scoped lang="scss">
-@use "@/styles/theme.scss" as *;
+@use "wine-ui/styles/theme.scss" as *;
+
 .app-container {
   min-height: 100vh;
   background-color: var(--w-bg-color);

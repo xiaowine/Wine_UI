@@ -23,7 +23,7 @@ const handleThemeChange = () => {
 </script>
 
 <style scoped lang="scss">
-@use "@/styles/theme.scss" as *;
+@use "wine-ui/styles/theme.scss" as *;
 
 .theme-switch {
   position: relative;

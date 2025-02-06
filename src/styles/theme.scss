@@ -83,3 +83,8 @@ $themes: (
 // 生成主题
 @include generate-theme("light");
 @include generate-theme("dark");
+@mixin mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
