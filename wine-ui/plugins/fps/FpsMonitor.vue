@@ -31,6 +31,8 @@ const requestNextFrame =
   window.requestAnimationFrame ||
   ((callback) => window.setTimeout(callback, 1000 / 60));
 
+const updateInterval = computed(() => fpsConfig.interval ?? 1000);
+
 const updateFps = () => {
   if (!isVisible.value) {
     return;
@@ -39,7 +41,7 @@ const updateFps = () => {
   const currentTimestamp = Date.now();
   frameCount++;
 
-  if (currentTimestamp > 1000 + previousTimestamp) {
+  if (currentTimestamp > updateInterval.value + previousTimestamp) {
     currentFps.value = Math.round(
       (frameCount * 1000) / (currentTimestamp - previousTimestamp)
     );

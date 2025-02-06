@@ -16,6 +16,7 @@ app.use(FpsPlugin, {
   marginRight: 20,
   marginBottom: 10,
   show: true,
+  interval: 1000,
 });
 
 app.mount("#app");

@@ -9,6 +9,7 @@ export interface FpsOptions {
   marginBottom?: number;
   marginLeft?: number;
   marginRight?: number;
+  interval?: number;
 }
 
 const globalOptions: FpsOptions = {};
