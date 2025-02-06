@@ -20,21 +20,22 @@ $themes: (
   ),
   dark: (
     primary: (
-      base: #177ddc,
-      hover: #3c9ae8,
-      active: #0958a5,
+      base: #4d9eff,
+      hover: #66acff,
+      active: #2d7eeb,
     ),
     text: (
-      base: #e6e6e6,
-      secondary: #a6a6a6,
-      disabled: #666666,
+      base: #f0f0f0,
+      secondary: #bfbfbf,
+      disabled: #808080,
     ),
     background: (
-      base: #141414,
-      hover: #1f1f1f,
+      base: #1a1a1a,
+      hover: #2c2c2c,
+      secondary: #242424,
     ),
-    border: #303030,
-    shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+    border: #383838,
+    shadow: 0 4px 12px rgba(0, 0, 0, 0.5),
   ),
 );
 
@@ -65,6 +66,7 @@ $themes: (
 
   --w-bg-color: #{map-get(map-get($theme-map, background), base)};
   --w-bg-color-hover: #{map-get(map-get($theme-map, background), hover)};
+  --w-bg-color-secondary: #{map-get(map-get($theme-map, background), secondary)};
 
   --w-border-color: #{map-get($theme-map, border)};
   --w-shadow: #{map-get($theme-map, shadow)};
