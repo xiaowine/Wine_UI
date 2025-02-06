@@ -44,10 +44,11 @@ import ThemeSwitch from "./components/ThemeSwitch.vue";
 
 const isTopbarMenuOpen = ref(false);
 
-// 注入主题实例
 const themeContext = inject<ThemeContext>("theme");
 
 const themeTransitionRef = ref();
+
+let pendingThemeChange = false;
 
 const menuItems: MenuItem[] = [
   {
@@ -74,12 +75,12 @@ const handleSelect = (item: MenuItem) => {
 
 const handleBeforeOpen = () => {
   console.log("即将打开菜单");
-  return true; // 返回 false 可以阻止打开
+  return true;
 };
 
 const handleBeforeClose = (type: MenuEventType) => {
   console.log("即将关闭菜单", type);
-  return true; // 返回 false 可以阻止关闭
+  return true;
 };
 
 const handleOpened = () => {
@@ -93,7 +94,6 @@ const handleClosed = (type: MenuEventType) => {
 
 const handleBeforeSelect = (item: MenuItem) => {
   console.log("即将选择菜单项:", item.label);
-  // 返回 false 可以阻止选择和后续的关闭操作
   return true;
 };
 
@@ -101,10 +101,6 @@ const handleSelected = (item: MenuItem) => {
   console.log("菜单项已选择:", item.label);
 };
 
-// 新增：主题切换相关变量
-let pendingThemeChange = false;
-
-// 新增：动画完成后的回调
 const onTransitionComplete = () => {
   if (pendingThemeChange) {
     themeContext?.toggleTheme();
@@ -112,13 +108,19 @@ const onTransitionComplete = () => {
   }
 };
 
-// 修改切换主题方法
 const toggleTheme = () => {
-  const nextTheme = themeContext?.theme.value === "light" ? "dark" : "light";
-  const nextColor = nextTheme === "light" ? "#ffffff" : "#1a1a1a";
+  if (pendingThemeChange || themeTransitionRef.value?.isAnimating) return;
 
-  pendingThemeChange = true;
-  themeTransitionRef.value?.trigger(nextColor);
+  const nextTheme = themeContext?.theme.value === "light" ? "dark" : "light";
+  const nextColor = getComputedStyle(document.documentElement)
+    .getPropertyValue(
+      nextTheme === "light" ? "--w-bg-color-light" : "--w-bg-color-dark"
+    )
+    .trim();
+
+  if (themeTransitionRef.value?.trigger(nextColor)) {
+    pendingThemeChange = true;
+  }
 };
 </script>
 

@@ -83,6 +83,18 @@ $themes: (
 // 生成主题
 @include generate-theme("light");
 @include generate-theme("dark");
+
+:root {
+  --w-bg-color-light: #{map-get(
+      map-get(map-get($themes, light), background),
+      base
+    )};
+  --w-bg-color-dark: #{map-get(
+      map-get(map-get($themes, dark), background),
+      base
+    )};
+}
+
 @mixin mobile {
   @media screen and (max-width: 768px) {
     @content;

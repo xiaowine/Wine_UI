@@ -20,6 +20,7 @@ const active = ref(false);
 const x = ref(0);
 const y = ref(0);
 const nextThemeColor = ref("");
+const isAnimating = ref(false);
 
 const emit = defineEmits<{
   (e: "transitionComplete"): void;
@@ -28,20 +29,27 @@ const emit = defineEmits<{
 const onTransitionEnd = () => {
   active.value = false;
   nextThemeColor.value = "";
+  isAnimating.value = false;
   emit("transitionComplete");
 };
 
 const trigger = (nextColor: string) => {
+  if (isAnimating.value) return false;
+
+  isAnimating.value = true;
   nextThemeColor.value = nextColor;
   active.value = false;
 
   requestAnimationFrame(() => {
     active.value = true;
   });
+
+  return true;
 };
 
 defineExpose({
   trigger,
+  isAnimating,
 });
 </script>
 
