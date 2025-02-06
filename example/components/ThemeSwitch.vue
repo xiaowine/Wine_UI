@@ -16,7 +16,10 @@
 withDefaults(defineProps<{ theme: string }>(), {
   theme: "light",
 });
-const emit = defineEmits();
+const emit = defineEmits<{
+  (e: "toggleThemeEvent"): void;
+}>();
+
 const handleThemeChange = () => {
   emit("toggleThemeEvent");
 };

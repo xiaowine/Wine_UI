@@ -27,18 +27,27 @@
         <h1>Wine UI 组件库示例</h1>
       </div>
     </div>
+    <ThemeTransition
+      ref="themeTransitionRef"
+      @transition-complete="onTransitionComplete"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, inject } from "vue";
-import { Topbar, type MenuItem } from "wine-ui";
+import { Topbar, type MenuItem, ThemeTransition } from "wine-ui";
 import logo from "@example/assets/vue.svg";
 import type { MenuEventType } from "@/components/Topbar/types";
 import type { ThemeContext } from "@/plugins/theme/types";
 import ThemeSwitch from "./components/ThemeSwitch.vue";
 
 const isTopbarMenuOpen = ref(false);
+
+// 注入主题实例
+const themeContext = inject<ThemeContext>("theme");
+
+const themeTransitionRef = ref();
 
 const menuItems: MenuItem[] = [
   {
@@ -92,12 +101,24 @@ const handleSelected = (item: MenuItem) => {
   console.log("菜单项已选择:", item.label);
 };
 
-// 注入主题实例
-const themeContext = inject<ThemeContext>("theme");
+// 新增：主题切换相关变量
+let pendingThemeChange = false;
 
-// 切换主题方法
+// 新增：动画完成后的回调
+const onTransitionComplete = () => {
+  if (pendingThemeChange) {
+    themeContext?.toggleTheme();
+    pendingThemeChange = false;
+  }
+};
+
+// 修改切换主题方法
 const toggleTheme = () => {
-  themeContext?.toggleTheme();
+  const nextTheme = themeContext?.theme.value === "light" ? "dark" : "light";
+  const nextColor = nextTheme === "light" ? "#ffffff" : "#1a1a1a";
+
+  pendingThemeChange = true;
+  themeTransitionRef.value?.trigger(nextColor);
 };
 </script>
 

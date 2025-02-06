@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [vue()],
-  root: "example", // 设置开发服务器根目录
+  root: "example",
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
