@@ -7,7 +7,7 @@
   align-items: center;
   padding: 8px 16px;
   border: 2px solid var(--w-primary-color);
-  border-radius: 20px;
+  border-radius: var(--w-border-radius);
   background: transparent;
   color: var(--w-text-color);
   font-size: 14px;

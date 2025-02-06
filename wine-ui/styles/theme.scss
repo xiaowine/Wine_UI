@@ -74,6 +74,7 @@ $themes: (
   --w-shadow: #{map.get($theme-map, shadow)};
 
   // 组件特定变量保持不变
+  --w-border-radius: 20px;
   --w-topbar-height: 60px;
   --w-topbar-background: var(--w-bg-color);
   --w-topbar-z-index: 1000;

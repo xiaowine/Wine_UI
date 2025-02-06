@@ -1,4 +1,4 @@
-// @use "@/styles/theme.scss";
+@use "@/styles/theme.scss";
 
 @mixin mobile {
   @media screen and (max-width: 768px) {

@@ -16,14 +16,6 @@ export default defineConfig({
       "@theme": resolve(__dirname, "wine-ui/styles"),
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "@/styles/theme.scss";;`,
-        includePaths: [resolve(__dirname)],
-      },
-    },
-  },
   build: {
     outDir: resolve(__dirname, "dist"),
     assetsDir: "assets",

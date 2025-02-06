@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    <FpsMonitor />
     <Topbar
       v-model="isTopbarMenuOpen"
       :logo="toplogo"
