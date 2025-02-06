@@ -6,9 +6,9 @@
           <img src="@example/assets/vue.svg" alt="Logo" />
         </div>
         <nav class="nav-menu" :class="{ 'nav-menu-active': isMenuOpen }">
-          <a href="#" class="nav-item" @click="closeMenu">首页</a>
-          <a href="#" class="nav-item" @click="closeMenu">产品</a>
-          <a href="#" class="nav-item" @click="closeMenu">关于</a>
+          <a href="#" class="nav-item">首页</a>
+          <a href="#" class="nav-item">产品</a>
+          <a href="#" class="nav-item">关于</a>
         </nav>
         <div
           class="menu-toggle"
