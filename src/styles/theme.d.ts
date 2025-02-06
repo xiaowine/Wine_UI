@@ -1,3 +1,5 @@
+export type Theme = "light" | "dark";
+
 export interface ThemeVars {
   "--w-primary-color": string;
   "--w-primary-color-hover": string;
@@ -9,4 +11,9 @@ export interface ThemeVars {
   "--w-bg-color-hover": string;
   "--w-border-color": string;
   "--w-shadow": string;
+}
+
+export interface ThemeContext {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
 }

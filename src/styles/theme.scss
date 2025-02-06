@@ -28,3 +28,29 @@
   --w-nav-gap: 30px;
   --w-mobile-nav-gap: 15px;
 }
+
+// 深色模式
+[data-theme="dark"] {
+  // 主色调
+  --w-primary-color: #177ddc;
+  --w-primary-color-hover: #3c9ae8;
+  --w-primary-color-active: #0958a5;
+
+  // 文字颜色
+  --w-text-color: #e6e6e6;
+  --w-text-color-secondary: #a6a6a6;
+  --w-text-color-disabled: #666666;
+
+  // 背景色
+  --w-bg-color: #141414;
+  --w-bg-color-hover: #1f1f1f;
+
+  // 边框颜色
+  --w-border-color: #303030;
+
+  // 阴影
+  --w-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+
+  // 组件特定变量
+  --w-topbar-background: #1f1f1f;
+}
