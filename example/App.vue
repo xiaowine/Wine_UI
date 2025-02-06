@@ -36,11 +36,10 @@
 
 <script setup lang="ts">
 import { ref, inject } from "vue";
-import { Topbar, type MenuItem, ThemeTransition } from "wine-ui";
+import { Topbar, type MenuItem, ThemeTransition, ThemeSwitch } from "wine-ui";
 import logo from "@example/assets/vue.svg";
 import type { MenuEventType } from "@/components/Topbar/types";
 import type { ThemeContext } from "@/plugins/theme/types";
-import ThemeSwitch from "./components/ThemeSwitch.vue";
 
 const isTopbarMenuOpen = ref(false);
 
