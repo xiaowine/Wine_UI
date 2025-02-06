@@ -24,7 +24,8 @@
       "@assets/*": ["src/assets/*"],
       "@utils/*": ["src/utils/*"],
       "@example/*": ["example/*"],
-      "packages/*": ["src/components/*"]
+      "packages/*": ["src/components/*"],
+      "wine-ui": ["src/index.ts"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

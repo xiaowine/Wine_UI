@@ -1,8 +1,12 @@
 import type { App } from "vue";
+import Topbar from "./components/Topbar";
+import type { MenuItem } from "./components/Topbar/types";
 
-// 这里之后导出组件
+export { Topbar };
+export type { MenuItem }; // 导出类型
+
 export default {
   install(app: App) {
-    // 注册组件
+    app.component("xTopbar", Topbar);
   },
 };

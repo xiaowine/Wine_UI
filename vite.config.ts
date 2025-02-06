@@ -14,6 +14,7 @@ export default defineConfig({
       "@utils": resolve(__dirname, "src/utils"),
       "@example": resolve(__dirname, "example"),
       packages: resolve(__dirname, "src/components"),
+      "wine-ui": resolve(__dirname, "src"),
     },
   },
   build: {
