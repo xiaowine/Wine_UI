@@ -15,6 +15,7 @@ export interface ThemeContext {
   toggleTheme: () => void;
   enableAutoTheme: () => void;
   disableAutoTheme: () => void;
+  isAutoTheme: ComputedRef<boolean>;
 }
 
 // declare module "@vue/runtime-core" {
