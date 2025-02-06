@@ -1,5 +1,5 @@
 <template>
-  <Teleport to="body">
+  <Teleport defer to="body">
     <div
       class="theme-transition"
       :class="{ 'theme-transition--active': active }"
@@ -22,11 +22,13 @@ const emit = defineEmits<{
   (e: "transitionComplete"): void;
 }>();
 
-const onTransitionEnd = () => {
-  active.value = false;
-  nextThemeColor.value = "";
-  isAnimating.value = false;
-  emit("transitionComplete");
+const onTransitionEnd = (e: TransitionEvent) => {
+  if (e.propertyName === "transform") {
+    active.value = false;
+    nextThemeColor.value = "";
+    isAnimating.value = false;
+    emit("transitionComplete");
+  }
 };
 
 const trigger = (nextColor: string) => {
@@ -34,13 +36,13 @@ const trigger = (nextColor: string) => {
 
   isAnimating.value = true;
   nextThemeColor.value = nextColor;
-  active.value = false;
 
-  requestAnimationFrame(() => {
-    active.value = true;
+  return new Promise<boolean>((resolve) => {
+    requestAnimationFrame(() => {
+      active.value = true;
+      resolve(true);
+    });
   });
-
-  return true;
 };
 
 defineExpose({

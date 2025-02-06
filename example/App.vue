@@ -38,6 +38,7 @@
 import toplogo from "/vue.svg";
 import { ref, inject } from "vue";
 import { Topbar, type MenuItem, ThemeTransition, ThemeSwitch } from "wine-ui";
+import { debounce } from "wine-ui/utils";
 import type { MenuEventType } from "wine-ui/components/Topbar/types";
 import type { ThemeContext } from "wine-ui/plugins/theme/types";
 
@@ -102,12 +103,14 @@ const handleSelected = (item: MenuItem) => {
 
 const onTransitionComplete = () => {
   if (pendingThemeChange) {
+    console.log("主题切换动画完成");
     themeContext?.toggleTheme();
     pendingThemeChange = false;
   }
 };
 
-const toggleTheme = () => {
+// 使用防抖包装主题切换函数
+const toggleTheme = debounce(async () => {
   if (pendingThemeChange || themeTransitionRef.value?.isAnimating) return;
 
   const nextTheme = themeContext?.theme.value === "light" ? "dark" : "light";
@@ -117,10 +120,9 @@ const toggleTheme = () => {
     )
     .trim();
 
-  if (themeTransitionRef.value?.trigger(nextColor)) {
-    pendingThemeChange = true;
-  }
-};
+  pendingThemeChange = await themeTransitionRef.value?.trigger(nextColor);
+  console.log("开始主题切换动画", pendingThemeChange);
+}, 300);
 </script>
 
 <style lang="scss">

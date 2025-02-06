@@ -6,6 +6,7 @@ import type { MenuItem } from "./components/Topbar/types";
 
 export { Topbar, ThemeTransition, ThemeSwitch };
 export type { MenuItem };
+export * from "./utils";
 
 export default {
   install(app: App) {
