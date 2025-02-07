@@ -3,9 +3,6 @@
     class="w-topbar"
     :class="{ 'w-topbar-fixed': fixed }"
     :style="{
-      '--w-topbar-height': height
-        ? `${typeof height === 'number' ? height + 'px' : height}`
-        : undefined,
       '--w-topbar-shadow': shadow ? 'var(--w-shadow)' : 'none',
     }"
   >
@@ -20,9 +17,6 @@
           :items="items"
           position="left"
           :active="modelValue"
-          :navGap="navGap"
-          :mobile-item-gap="mobileItemGap"
-          :mobile-nav-gap="mobileNavGap"
           @select="handleItemClick"
         />
         <slot name="left"></slot>
@@ -35,9 +29,6 @@
           :items="items"
           position="center"
           :active="modelValue"
-          :navGap="navGap"
-          :mobile-item-gap="mobileItemGap"
-          :mobile-nav-gap="mobileNavGap"
           @select="handleItemClick"
         />
       </div>
@@ -49,9 +40,6 @@
           :items="items"
           position="right"
           :active="modelValue"
-          :navGap="navGap"
-          :mobile-item-gap="mobileItemGap"
-          :mobile-nav-gap="mobileNavGap"
           @select="handleItemClick"
         />
         <div

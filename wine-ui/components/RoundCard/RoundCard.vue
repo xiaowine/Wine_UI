@@ -1,14 +1,11 @@
 <template>
   <div
     class="w-round-card"
-    :style="
-      radius !== undefined
-        ? {
-            '--w-border-radius':
-              typeof radius === 'number' ? `${radius}px` : radius,
-          }
-        : {}
-    "
+    :style="{
+      ...(radius !== undefined && {
+        'border-radius': typeof radius === 'number' ? `${radius}px` : radius,
+      }),
+    }"
   >
     <slot></slot>
   </div>

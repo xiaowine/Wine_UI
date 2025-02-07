@@ -28,25 +28,20 @@
         <h1>Wine UI 组件库示例</h1>
       </div>
     </div>
-    <div class="card-example">
+    <RoundCard class="card-example">
       <h3>卡片组件RoundCard示例</h3>
       <div class="card-example-container">
         <RoundCard class="image-card" :radius="0">
           <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
-        <RoundCard
-          v-for="i in 6"
-          :key="i"
-          class="image-card"
-          :radius="i * 7 * 2"
-        >
+        <RoundCard v-for="i in 30" :key="i" class="image-card" :radius="i * 3">
           <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
         <RoundCard class="image-card">
           <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
       </div>
-    </div>
+    </RoundCard>
   </div>
   <ThemeTransition
     ref="themeTransitionRef"
@@ -182,11 +177,16 @@ const toggleTheme = debounce(async () => {
   }
 }
 .card-example {
-  padding: 50px;
+  padding: 10px;
+  text-align: center;
+  margin: 30px;
+
   &-container {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 40px;
   }
 }
 

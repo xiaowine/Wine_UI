@@ -7,25 +7,6 @@
       'w-nav-menu-center': position === 'center',
       'w-nav-menu-active': active,
     }"
-    :style="{
-      '--w-nav-gap': navGap
-        ? `${typeof navGap === 'number' ? navGap + 'px' : navGap}`
-        : undefined,
-      '--w-nav-item-gap-mobile': mobileItemGap
-        ? `${
-            typeof mobileItemGap === 'number'
-              ? mobileItemGap + 'px'
-              : mobileItemGap
-          }`
-        : undefined,
-      '--w-nav-container-padding': mobileNavGap
-        ? `${
-            typeof mobileNavGap === 'number'
-              ? mobileNavGap + 'px'
-              : mobileNavGap
-          }`
-        : undefined,
-    }"
   >
     <div class="w-nav-menu-content" v-for="item in items" :key="item.key">
       <a
@@ -43,7 +24,7 @@
 <script setup lang="ts">
 import type { MenuItem, MenuProps } from "../types";
 
-const props = defineProps<MenuProps>();
+defineProps<MenuProps>();
 const emit = defineEmits<{
   (e: "select", item: MenuItem): void;
 }>();

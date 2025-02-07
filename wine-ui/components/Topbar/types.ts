@@ -11,12 +11,6 @@ export interface MenuProps {
   position?: "left" | "right" | "center";
   active?: boolean;
   modelValue?: string;
-  /** 导航项间距，默认 30px */
-  navGap?: string | number;
-  /** 移动端导航项内边距，默认 30px */
-  mobileItemGap?: string | number;
-  /** 移动端导航项间距，默认 30px */
-  mobileNavGap?: string | number;
 }
 
 export type MenuEventType = "menu" | "escape" | "overlay";
@@ -26,15 +20,8 @@ export interface TopbarProps {
   logo?: string;
   title?: string;
   fixed?: boolean;
-  height?: string | number;
   shadow?: boolean;
   navPosition?: "left" | "center" | "right";
-  /** 导航项间距，默认 30px */
-  navGap?: string | number;
-  /** 移动端导航项内边距，默认 30px */
-  mobileItemGap?: string | number;
-  /** 移动端导航项间距，默认 30px */
-  mobileNavGap?: string | number;
   items?: MenuItem[];
 }
 
