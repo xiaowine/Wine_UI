@@ -1,7 +1,4 @@
 import RoundCard from "./RoundCard.vue";
+export type { RoundCardProps } from "./types";
 
 export default RoundCard;
-interface Props {
-  radius?: number;
-  shadowLevel?: number;
-}
