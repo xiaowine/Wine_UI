@@ -2,7 +2,12 @@
   <div
     class="w-topbar"
     :class="{ 'w-topbar-fixed': fixed }"
-    :style="topbarStyle"
+    :style="{
+      '--w-topbar-height': height
+        ? `${typeof height === 'number' ? height + 'px' : height}`
+        : undefined,
+      '--w-topbar-shadow': shadow ? 'var(--w-shadow)' : 'none',
+    }"
   >
     <div class="w-topbar-content">
       <div class="w-topbar-left">
@@ -11,12 +16,11 @@
           <span v-else>{{ title }}</span>
         </div>
         <NavMenu
-          v-if="currentPosition === 'left'"
+          v-if="currentPosition === 'left' && items"
           :items="items"
           position="left"
           :active="modelValue"
-          :nav-gap="navGap"
-          :mobile-nav-gap="mobileNavGap"
+          :gap="gap"
           @select="handleItemClick"
         />
         <slot name="left"></slot>
@@ -25,12 +29,11 @@
       <div class="w-topbar-center">
         <slot name="center"></slot>
         <NavMenu
-          v-if="currentPosition === 'center'"
+          v-if="currentPosition === 'center' && items"
           :items="items"
           position="center"
           :active="modelValue"
-          :nav-gap="navGap"
-          :mobile-nav-gap="mobileNavGap"
+          :gap="gap"
           @select="handleItemClick"
         />
       </div>
@@ -38,12 +41,11 @@
       <div class="w-topbar-right">
         <slot name="right"></slot>
         <NavMenu
-          v-if="currentPosition === 'right'"
+          v-if="currentPosition === 'right' && items"
           :items="items"
           position="right"
           :active="modelValue"
-          :nav-gap="navGap"
-          :mobile-nav-gap="mobileNavGap"
+          :gap="gap"
           @select="handleItemClick"
         />
         <div
@@ -58,37 +60,23 @@
       </div>
     </div>
   </div>
+  <div
+    class="w-nav-overlay"
+    :class="{ 'w-nav-overlay-active': modelValue }"
+    @click="() => handleClose('overlay')"
+  ></div>
 </template>
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from "vue";
-import type { TopbarProps, TopbarEmits, TopbarVars } from "./types";
+import type { TopbarProps, TopbarEmits } from "./types";
 import { useMenu } from "./composables/useMenu";
 import NavMenu from "./components/NavMenu.vue";
 
-const props = withDefaults(defineProps<TopbarProps>(), {
-  modelValue: false,
-  logo: "",
-  title: "Logo",
-  fixed: true,
-  zIndex: 1000,
-  height: "60px",
-  shadow: true,
-  navPosition: "center",
-  navGap: "30px",
-  mobileNavGap: "15px",
-  items: () => [],
-});
+const props = defineProps<TopbarProps>();
 
 const emit = defineEmits<TopbarEmits>();
 const { handleClose, toggleMenu, handleItemClick } = useMenu(emit);
-
-const topbarStyle = computed<Partial<TopbarVars>>(() => ({
-  "--w-topbar-height":
-    typeof props.height === "number" ? `${props.height}px` : props.height,
-  "--w-topbar-z-index": props.zIndex,
-  "--w-topbar-shadow": props.shadow ? `var(--w-shadow)` : "none",
-}));
 
 const currentPosition = computed(() => props.navPosition ?? "center");
 

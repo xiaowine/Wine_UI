@@ -6,21 +6,28 @@ export interface MenuItem {
   onClick?: () => void;
 }
 
+export interface MenuProps {
+  items: MenuItem[];
+  position?: "left" | "right" | "center";
+  active?: boolean;
+  modelValue?: string;
+  /** 导航项间距，默认 30px */
+  gap?: string | number;
+}
+
 export type MenuEventType = "menu" | "escape" | "overlay";
 
 export interface TopbarProps {
-  modelValue?: boolean;
+  modelValue: boolean;
   logo?: string;
   title?: string;
   fixed?: boolean;
-  zIndex?: number;
   height?: string | number;
   shadow?: boolean;
   navPosition?: "left" | "center" | "right";
-  navGap?: string | number;
-  mobileNavGap?: string | number;
+  /** 导航项间距，默认 30px */
+  gap?: string | number;
   items?: MenuItem[];
-  // 移除所有回调属性
 }
 
 // 新增事件类型定义
@@ -36,13 +43,4 @@ export interface TopbarEmits {
   (e: "closed", type: MenuEventType): void;
   (e: "before-select", item: MenuItem): boolean | Promise<boolean>;
   (e: "selected", item: MenuItem): void;
-}
-
-export interface TopbarVars {
-  "--w-topbar-height": string;
-  "--w-topbar-background": string;
-  "--w-topbar-z-index": number;
-  "--w-topbar-shadow": string;
-  "--w-nav-gap": string;
-  "--w-mobile-nav-gap": string;
 }

@@ -1,19 +1,14 @@
 <template>
   <div class="app-container">
-    <FpsMonitor
-      position="bottomRight"
-      marginRight="20"
-      marginBottom="10"
-      :show="true"
-      :interval="1000"
-    />
     <Topbar
       v-model="isTopbarMenuOpen"
       :logo="toplogo"
       title="Wine UI"
-      nav-position="left"
+      nav-position="right"
       :items="menuItems"
-      mobile-nav-gap="20px"
+      :shadow="true"
+      :fixed="true"
+      gap="20px"
       @before-open="handleBeforeOpen"
       @before-close="handleBeforeClose"
       @opened="handleOpened"
@@ -34,18 +29,37 @@
         <h1>Wine UI 组件库示例</h1>
       </div>
     </div>
-    <ThemeTransition
-      ref="themeTransitionRef"
-      @transition-complete="onTransitionComplete"
-    />
-    <FpsMonitor
-      position="bottomRight"
-      :marginRight="20"
-      :marginBottom="10"
-      :show="true"
-      :interval="1000"
-    />
+    <div class="card-example">
+      <h3>卡片组件RoundCard示例</h3>
+      <div class="card-example-container">
+        <RoundCard class="image-card" :radius="0">
+          <img src="https://picsum.photos/300/200" alt="示例图片" />
+        </RoundCard>
+        <RoundCard
+          v-for="i in 6"
+          :key="i"
+          class="image-card"
+          :radius="i * 7 * 2"
+        >
+          <img src="https://picsum.photos/300/200" alt="示例图片" />
+        </RoundCard>
+        <RoundCard class="image-card">
+          <img src="https://picsum.photos/300/200" alt="示例图片" />
+        </RoundCard>
+      </div>
+    </div>
   </div>
+  <ThemeTransition
+    ref="themeTransitionRef"
+    @transition-complete="onTransitionComplete"
+  />
+  <FpsMonitor
+    position="bottomRight"
+    marginRight="20"
+    marginBottom="10"
+    :show="true"
+    :interval="1000"
+  />
 </template>
 
 <script setup lang="ts">
@@ -56,6 +70,7 @@ import {
   ThemeTransition,
   ThemeSwitch,
   FpsMonitor,
+  RoundCard,
   type MenuItem,
 } from "wine-ui";
 import { debounce } from "wine-ui/utils";
@@ -166,5 +181,18 @@ const toggleTheme = debounce(async () => {
   @include mobile {
     padding: 15px;
   }
+}
+.card-example {
+  padding: 50px;
+  &-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
+
+.image-card {
+  width: 200px;
+  height: 166px;
 }
 </style>

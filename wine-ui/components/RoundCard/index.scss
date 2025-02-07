@@ -1,0 +1,13 @@
+.w-round-card {
+  background-color: var(--w-bg-color, #ffffff);
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, var(--w-shadow-opacity-base)),
+    0 4px 12px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-base) * 0.8)),
+    0 8px 24px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-base) * 0.6));
+  border-radius: var(--w-border-radius);
+  &:hover {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, var(--w-shadow-opacity-hover)),
+      0 4px 12px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-hover) * 0.8)),
+      0 8px 24px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-hover) * 0.6));
+  }
+}

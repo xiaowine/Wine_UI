@@ -1,7 +1,9 @@
 <template>
-  <div class="fps-monitor" v-show="props.show" :style="monitorStyle">
-    FPS: {{ props.show ? currentFps : 0 }}
-  </div>
+  <Teleport defer to="body">
+    <div class="fps-monitor" v-show="props.show" :style="monitorStyle">
+      FPS: {{ props.show ? currentFps : 0 }}
+    </div>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -17,7 +19,6 @@ const props = withDefaults(defineProps<FpsProps>(), {
   marginLeft: 0,
   marginRight: 0,
 });
-console.log(props);
 const monitorStyle = computed(() => {
   const style: Record<string, string> = {};
 
