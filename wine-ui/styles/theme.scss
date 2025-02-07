@@ -1,5 +1,7 @@
 @use "sass:map";
 
+@use "./tools.scss";
+
 // 定义主题色值映射
 $themes: (
   light: (
@@ -99,8 +101,7 @@ $themes: (
   --w-topbar-shadow: var(--w-shadow);
   --w-nav-gap: 30px;
   --w-nav-item-gap-mobile: 18px;
-  --w-nav-container-padding: 10px;
-  // 新增背景模糊相关变量
+  --w-nav-container-padding: 1px;
   --w-bg-color-blur: rgba(255, 255, 255, 0.8);
   --w-overlay-color: rgba(255, 255, 255, 0.2);
 }

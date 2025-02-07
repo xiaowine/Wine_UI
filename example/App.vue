@@ -28,16 +28,22 @@
         <h1>Wine UI 组件库示例</h1>
       </div>
     </div>
-    <RoundCard class="card-example">
+    <RoundCard class="card-example shadow-box">
       <h3>卡片组件RoundCard示例</h3>
       <div class="card-example-container">
-        <RoundCard class="image-card" :radius="0">
+        <RoundCard class="image-card shadow-box" :radius="0">
           <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
-        <RoundCard v-for="i in 30" :key="i" class="image-card" :radius="i * 3">
+        <RoundCard
+          v-for="i in 30"
+          :key="i"
+          class="image-card shadow-box"
+          :radius="i * 3"
+        >
+          {{ i * 3 }}
           <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
-        <RoundCard class="image-card">
+        <RoundCard class="image-card shadow-box">
           <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
       </div>
@@ -155,10 +161,13 @@ const toggleTheme = debounce(async () => {
   min-height: 100vh;
   background-color: var(--w-bg-color);
   color: var(--w-text-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content {
   padding-top: var(--w-topbar-height, 60px);
+  flex: 1;
 }
 
 .container {
@@ -170,19 +179,18 @@ const toggleTheme = debounce(async () => {
     padding: 15px;
   }
 }
+
 .card-example {
-  padding: 10px;
+  padding: 20px;
   text-align: center;
-  margin: 30px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, var(--w-shadow-opacity-base)),
-    0 4px 12px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-base) * 0.8)),
-    0 8px 24px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-base) * 0.6));
+  margin: 0 30px;
+
   &-container {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 40px;
+    padding: 20px 0;
   }
 }
 
