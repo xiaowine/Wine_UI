@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container custom-scrollbar">
     <Topbar
       v-model="isTopbarMenuOpen"
       :logo="toplogo"
@@ -30,7 +30,7 @@
     </div>
     <RoundCard class="card-example shadow-box">
       <h3>卡片组件RoundCard示例</h3>
-      <div class="card-example-container">
+      <div class="card-example-container custom-scrollbar">
         <RoundCard class="image-card shadow-box" :radius="0">
           <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
@@ -183,7 +183,7 @@ const toggleTheme = debounce(async () => {
 .card-example {
   padding: 20px;
   text-align: center;
-  margin: 0 30px;
+  margin: 30px;
 
   &-container {
     display: flex;

@@ -1,6 +1,5 @@
 @use "sass:map";
-
-@use "./tools.scss";
+@use "./common.scss";
 
 // 定义主题色值映射
 $themes: (
@@ -21,6 +20,11 @@ $themes: (
     ),
     border: #eeeeee,
     shadow: 0 2px 8px rgba(0, 0, 0, 0.1),
+    scrollbar: (
+      track: rgba(0, 0, 0, 0.05),
+      thumb: #40a9ff7d,
+      thumb-hover: #40a9ff,
+    ),
   ),
   dark: (
     primary: (
@@ -40,6 +44,11 @@ $themes: (
     ),
     border: #383838,
     shadow: 0 4px 12px rgba(0, 0, 0, 0.5),
+    scrollbar: (
+      track: rgba(255, 255, 255, 0.05),
+      thumb: rgba(144, 147, 153, 0.2),
+      thumb-hover: rgba(144, 147, 153, 0.4),
+    ),
   ),
 );
 
@@ -74,6 +83,14 @@ $themes: (
 
   --w-border-color: #{map.get($theme-map, border)};
   --w-shadow: #{map.get($theme-map, shadow)};
+
+  // 新增滚动条相关变量
+  --w-scrollbar-track-color: #{map.get(map.get($theme-map, scrollbar), track)};
+  --w-scrollbar-thumb-color: #{map.get(map.get($theme-map, scrollbar), thumb)};
+  --w-scrollbar-thumb-hover-color: #{map.get(
+      map.get($theme-map, scrollbar),
+      thumb-hover
+    )};
 }
 
 // 生成主题
@@ -119,4 +136,8 @@ $themes: (
   @media screen and (max-width: 768px) {
     @content;
   }
+}
+
+body {
+  @extend .custom-scrollbar;
 }
