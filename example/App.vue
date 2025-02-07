@@ -51,11 +51,16 @@
 <script setup lang="ts">
 import toplogo from "/vue.svg";
 import { ref, inject } from "vue";
-import { Topbar, type MenuItem, ThemeTransition, ThemeSwitch } from "wine-ui";
+import {
+  Topbar,
+  ThemeTransition,
+  ThemeSwitch,
+  FpsMonitor,
+  type MenuItem,
+} from "wine-ui";
 import { debounce } from "wine-ui/utils";
 import type { MenuEventType } from "wine-ui/components/Topbar/types";
 import type { ThemeContext } from "wine-ui/plugins/theme/types";
-import { FpsMonitor } from "@/components/FpsMonitor";
 
 const isTopbarMenuOpen = ref(false);
 
