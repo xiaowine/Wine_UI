@@ -8,7 +8,6 @@
       :items="menuItems"
       :shadow="true"
       :fixed="true"
-      gap="20px"
       @before-open="handleBeforeOpen"
       @before-close="handleBeforeClose"
       @opened="handleOpened"
@@ -33,7 +32,7 @@
       <h3>卡片组件RoundCard示例</h3>
       <div class="card-example-container">
         <RoundCard class="image-card" :radius="0">
-          <img src="https://picsum.photos/300/200" alt="示例图片" />
+          <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
         <RoundCard
           v-for="i in 6"
@@ -41,10 +40,10 @@
           class="image-card"
           :radius="i * 7 * 2"
         >
-          <img src="https://picsum.photos/300/200" alt="示例图片" />
+          <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
         <RoundCard class="image-card">
-          <img src="https://picsum.photos/300/200" alt="示例图片" />
+          <img src="https://api.xsot.cn/bing?jump=true" alt="示例图片" />
         </RoundCard>
       </div>
     </div>

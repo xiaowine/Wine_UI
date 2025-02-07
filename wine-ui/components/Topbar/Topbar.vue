@@ -20,7 +20,9 @@
           :items="items"
           position="left"
           :active="modelValue"
-          :gap="gap"
+          :navGap="navGap"
+          :mobile-item-gap="mobileItemGap"
+          :mobile-nav-gap="mobileNavGap"
           @select="handleItemClick"
         />
         <slot name="left"></slot>
@@ -33,7 +35,9 @@
           :items="items"
           position="center"
           :active="modelValue"
-          :gap="gap"
+          :navGap="navGap"
+          :mobile-item-gap="mobileItemGap"
+          :mobile-nav-gap="mobileNavGap"
           @select="handleItemClick"
         />
       </div>
@@ -45,7 +49,9 @@
           :items="items"
           position="right"
           :active="modelValue"
-          :gap="gap"
+          :navGap="navGap"
+          :mobile-item-gap="mobileItemGap"
+          :mobile-nav-gap="mobileNavGap"
           @select="handleItemClick"
         />
         <div

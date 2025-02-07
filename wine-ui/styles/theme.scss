@@ -98,8 +98,8 @@ $themes: (
   --w-topbar-z-index: 1000;
   --w-topbar-shadow: var(--w-shadow);
   --w-nav-gap: 30px;
-  --w-mobile-nav-gap: 15px;
-
+  --w-nav-item-gap-mobile: 18px;
+  --w-nav-container-padding: 10px;
   // 新增背景模糊相关变量
   --w-bg-color-blur: rgba(255, 255, 255, 0.8);
   --w-overlay-color: rgba(255, 255, 255, 0.2);
