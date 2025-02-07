@@ -1,6 +1,12 @@
 <template>
   <div class="app-container">
-    <FpsMonitor />
+    <FpsMonitor
+      position="bottomRight"
+      :marginRight="20"
+      :marginBottom="10"
+      :show="true"
+      :interval="1000"
+    />
     <Topbar
       v-model="isTopbarMenuOpen"
       :logo="toplogo"
@@ -32,6 +38,13 @@
       ref="themeTransitionRef"
       @transition-complete="onTransitionComplete"
     />
+    <FpsMonitor
+      position="bottomRight"
+      :marginRight="20"
+      :marginBottom="10"
+      :show="true"
+      :interval="1000"
+    />
   </div>
 </template>
 
@@ -42,6 +55,7 @@ import { Topbar, type MenuItem, ThemeTransition, ThemeSwitch } from "wine-ui";
 import { debounce } from "wine-ui/utils";
 import type { MenuEventType } from "wine-ui/components/Topbar/types";
 import type { ThemeContext } from "wine-ui/plugins/theme/types";
+import { FpsMonitor } from "@/components/FpsMonitor";
 
 const isTopbarMenuOpen = ref(false);
 
