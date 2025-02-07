@@ -47,13 +47,7 @@
     ref="themeTransitionRef"
     @transition-complete="onTransitionComplete"
   />
-  <FpsMonitor
-    position="bottomRight"
-    marginRight="20"
-    marginBottom="10"
-    :show="true"
-    :interval="1000"
-  />
+  <FpsMonitor position="bottomRight" marginRight="20px" marginBottom="10px" />
 </template>
 
 <script setup lang="ts">

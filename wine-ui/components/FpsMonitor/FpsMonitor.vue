@@ -11,13 +11,13 @@ import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 import type { FpsProps } from "./index";
 
 const props = withDefaults(defineProps<FpsProps>(), {
-  position: "bottomLeft",
+  position: "bottomRight",
   show: true,
   interval: 1000,
   marginTop: 0,
-  marginBottom: 0,
+  marginBottom: 10,
   marginLeft: 0,
-  marginRight: 0,
+  marginRight: 20,
 });
 const monitorStyle = computed(() => {
   const style: Record<string, string> = {};
