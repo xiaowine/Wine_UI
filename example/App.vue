@@ -174,7 +174,9 @@ const toggleTheme = debounce(async () => {
   padding: 10px;
   text-align: center;
   margin: 30px;
-
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, var(--w-shadow-opacity-base)),
+    0 4px 12px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-base) * 0.8)),
+    0 8px 24px 0 rgba(0, 0, 0, calc(var(--w-shadow-opacity-base) * 0.6));
   &-container {
     display: flex;
     gap: 20px;
