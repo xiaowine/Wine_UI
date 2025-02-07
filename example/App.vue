@@ -2,8 +2,8 @@
   <div class="app-container">
     <FpsMonitor
       position="bottomRight"
-      :marginRight="20"
-      :marginBottom="10"
+      marginRight="20"
+      marginBottom="10"
       :show="true"
       :interval="1000"
     />

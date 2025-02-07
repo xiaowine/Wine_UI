@@ -23,20 +23,44 @@ const monitorStyle = computed(() => {
 
   switch (props.position) {
     case "topLeft":
-      style.top = `${props.marginTop}px`;
-      style.left = `${props.marginLeft}px`;
+      style.top =
+        typeof props.marginTop === "number"
+          ? `${props.marginTop}px`
+          : props.marginTop;
+      style.left =
+        typeof props.marginLeft === "number"
+          ? `${props.marginLeft}px`
+          : props.marginLeft;
       break;
     case "topRight":
-      style.top = `${props.marginTop}px`;
-      style.right = `${props.marginRight}px`;
+      style.top =
+        typeof props.marginTop === "number"
+          ? `${props.marginTop}px`
+          : props.marginTop;
+      style.right =
+        typeof props.marginRight === "number"
+          ? `${props.marginRight}px`
+          : props.marginRight;
       break;
     case "bottomLeft":
-      style.bottom = `${props.marginBottom}px`;
-      style.left = `${props.marginLeft}px`;
+      style.bottom =
+        typeof props.marginBottom === "number"
+          ? `${props.marginBottom}px`
+          : props.marginBottom;
+      style.left =
+        typeof props.marginLeft === "number"
+          ? `${props.marginLeft}px`
+          : props.marginLeft;
       break;
     case "bottomRight":
-      style.bottom = `${props.marginBottom}px`;
-      style.right = `${props.marginRight}px`;
+      style.bottom =
+        typeof props.marginBottom === "number"
+          ? `${props.marginBottom}px`
+          : props.marginBottom;
+      style.right =
+        typeof props.marginRight === "number"
+          ? `${props.marginRight}px`
+          : props.marginRight;
       break;
   }
 
