@@ -20,8 +20,7 @@
 
   &::-webkit-scrollbar-thumb {
     background: var(--w-scrollbar-thumb-color);
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    border-radius: 10px;
 
     &:hover {
       background: var(--w-scrollbar-thumb-hover-color);
