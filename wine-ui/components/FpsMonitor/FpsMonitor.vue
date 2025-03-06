@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from "vue";
-import type { FpsProps } from "./index";
+import type { FpsProps } from "./types";
 
 const props = withDefaults(defineProps<FpsProps>(), {
   position: "bottomRight",

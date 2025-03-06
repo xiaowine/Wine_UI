@@ -29,6 +29,59 @@
       </div>
     </div>
     <RoundCard class="card-example shadow-box">
+      <div class="demo-section">
+        <h2>内容居中</h2>
+        <button class="demo-button" @click="showCenteredDialog = true">
+          打开居中内容对话框
+        </button>
+        <Dialog
+          v-model="showCenteredDialog"
+          title="内容居中对话框"
+          :center="true"
+          @confirm="() => console.log('点击确定')"
+          @cancel="() => console.log('点击取消')"
+          @close="() => console.log('点击关闭')"
+        >
+          <p>这个对话框的内容是居中的</p>
+          <p>标题和内容都会水平居中对齐</p>
+        </Dialog>
+      </div>
+      <div class="demo-section">
+        <h2>内容不居中</h2>
+        <button class="demo-button" @click="showDialog = true">
+          打开居中内容对话框
+        </button>
+        <Dialog
+          v-model="showDialog"
+          title="内容不居中对话框"
+          @confirm="() => console.log('点击确定')"
+          @cancel="() => console.log('点击取消')"
+          @close="() => console.log('点击关闭')"
+        >
+          <p>这个对话框的内容是不居中的</p>
+          <p>标题和内容都不会水平居中对齐</p>
+        </Dialog>
+      </div>
+      <div class="demo-section">
+        <h2>插槽替换</h2>
+        <button class="demo-button" @click="showSlotDialog = true">
+          打开居中内容对话框
+        </button>
+        <Dialog
+          v-model="showSlotDialog"
+          title="插槽替换"
+          @confirm="() => console.log('点击确定')"
+          @cancel="() => console.log('点击取消')"
+          @close="() => console.log('点击关闭')"
+        >
+          <template #footer>footer插槽</template>
+          <p>这是一段占位内容</p>
+          <p>这是插槽替换的副本内容</p>
+        </Dialog>
+      </div>
+    </RoundCard>
+
+    <RoundCard class="card-example shadow-box">
       <h3>卡片组件RoundCard示例</h3>
       <div class="card-example-container custom-scrollbar">
         <RoundCard class="image-card shadow-box" :radius="0">
@@ -65,6 +118,7 @@ import {
   ThemeSwitch,
   FpsMonitor,
   RoundCard,
+  Dialog,
   type MenuItem,
 } from "wine-ui";
 import { debounce } from "wine-ui/utils";
@@ -76,6 +130,10 @@ const isTopbarMenuOpen = ref(false);
 const themeContext = inject<ThemeContext>("theme");
 
 const themeTransitionRef = ref();
+
+const showCenteredDialog = ref(false);
+const showDialog = ref(false);
+const showSlotDialog = ref(false);
 
 let pendingThemeChange = false;
 
