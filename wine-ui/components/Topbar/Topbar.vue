@@ -10,7 +10,7 @@
       <div class="w-topbar-left">
         <div class="w-logo">
           <img v-if="logo" :src="logo" :alt="title" />
-          <span v-else>{{ title }}</span>
+          <span v-if="title" class="w-title">{{ title }}</span>
         </div>
         <NavMenu
           v-if="currentPosition === 'left' && items"

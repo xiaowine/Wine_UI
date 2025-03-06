@@ -135,19 +135,6 @@ onUnmounted(() => {
 });
 </script>
 
-<style scoped lang="scss">
-.fps-monitor {
-  position: fixed;
-  z-index: 9999;
-  padding: 6px 10px;
-  font-size: 1rem;
-  font-family: monospace;
-  user-select: none;
-  background: var(--w-bg-color);
-  color: var(--w-text-color);
-  box-shadow: var(--w-topbar-shadow);
-  border-radius: var(--w-border-radius);
-  display: flex;
-  align-items: center;
-}
+<style lang="scss" scoped>
+@use "./index.scss";
 </style>
